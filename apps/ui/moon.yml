@@ -1,0 +1,51 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+type: 'application'
+language: 'typescript'
+platform: 'node'
+
+tasks:
+  dev:
+    command: 'bun run dev'
+    local: true
+    options:
+      persistent: true
+
+  build:
+    command: 'bun run build'
+    inputs:
+      - 'src/**/*'
+      - 'static/**/*'
+      - 'package.json'
+      - 'svelte.config.js'
+      - 'vite.config.ts'
+    outputs:
+      - 'build'
+
+  preview:
+    command: 'bun run preview'
+    deps:
+      - 'build'
+    local: true
+
+  check:
+    command: 'bun run check'
+    inputs:
+      - 'src/**/*'
+      - 'package.json'
+      - 'svelte.config.js'
+      - 'tsconfig.json'
+
+  lint:
+    command: 'bun run lint'
+    inputs:
+      - 'src/**/*'
+      - 'package.json'
+      - '.eslintrc.cjs'
+
+  test:
+    command: 'bun test'
+    inputs:
+      - 'src/**/*'
+      - 'tests/**/*'
+      - 'package.json'

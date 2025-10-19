@@ -1,0 +1,40 @@
+$schema: 'https://moonrepo.dev/schemas/project.json'
+
+language: 'go'
+
+tasks:
+  build:
+    command: 'go build -o ./bin/app ./cmd'
+    inputs:
+      - 'go.mod'
+      - 'go.sum'
+      - 'cmd/**/*'
+      - 'internal/**/*'
+    outputs:
+      - 'bin/app'
+
+  test:
+    command: 'go test ./...'
+    inputs:
+      - 'go.mod'
+      - 'go.sum'
+      - '**/*.go'
+
+  lint:
+    command: 'golangci-lint run'
+    inputs:
+      - 'go.mod'
+      - 'go.sum'
+      - '**/*.go'
+
+  fmt:
+    command: 'go fmt ./...'
+    inputs:
+      - '**/*.go'
+
+  mod-tidy:
+    command: 'go mod tidy'
+    inputs:
+      - 'go.mod'
+    outputs:
+      - 'go.sum'
