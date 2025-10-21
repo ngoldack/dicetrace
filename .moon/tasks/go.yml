@@ -1,0 +1,18 @@
+tasks:
+  test:
+    command: 'go test ./...'
+    inputs:
+      - 'src/**/*.go'
+      - 'go.mod'
+      - 'go.sum'
+
+  lint:
+    command: 'golangci-lint run'
+    inputs:
+      - 'src/**/*.go'
+      - '.golangci.yml'
+
+  clean:
+    command: 'rm -rf bin/'
+    outputs:
+      - 'bin/'

@@ -5,4 +5,5 @@ bun = "latest"
 
 [plugins.tools]
 golangci-lint = "https://raw.githubusercontent.com/b4nst/proto-plugins/refs/heads/main/toml/golangci-lint.toml"
+protoc = "https://raw.githubusercontent.com/b4nst/proto-plugins/refs/heads/main/toml/protoc.toml"
 
