@@ -1,8 +1,8 @@
 # https://moonrepo.dev/docs/config/workspace
-$schema: 'https://moonrepo.dev/schemas/workspace.json'
+$schema: "https://moonrepo.dev/schemas/workspace.json"
 
 # extends: './shared/workspace.yml'
 
 projects:
-  - 'apps/*'
-  - 'library/*'
+  - "apps/*"
+  - "package/*"

@@ -1,1 +1,9 @@
 go 1.25.3
+
+use (
+	./apps/bgg-proxy
+
+	./package/user
+	./package/bgg
+	./package/core
+)

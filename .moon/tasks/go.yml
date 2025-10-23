@@ -1,18 +1,32 @@
 tasks:
   test:
-    command: 'go test ./...'
+    command: "gotestsum -- ./..."
+    options:
+      runInCI: true
     inputs:
-      - 'src/**/*.go'
-      - 'go.mod'
-      - 'go.sum'
+      - "src/**/*.go"
+      - "go.mod"
+      - "go.sum"
+
+  test/integration:
+    command: "gotestsum -- -tags=integration ./..."
+    options:
+      runInCI: true
+    inputs:
+      - "src/**/*.go"
+      - "go.mod"
+      - "go.sum"
 
   lint:
-    command: 'golangci-lint run'
+    command: "golangci-lint run"
+    options:
+      runInCI: true
     inputs:
-      - 'src/**/*.go'
-      - '.golangci.yml'
+      - "src/**/*.go"
+      - ".golangci.yml"
 
   clean:
-    command: 'rm -rf bin/'
+    command: "rm -rf bin/"
+    local: true
     outputs:
-      - 'bin/'
+      - "bin/"

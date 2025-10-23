@@ -1,1 +1,10 @@
-$schema: 'https://moonrepo.dev/schemas/toolchain.json'
+$schema: "https://moonrepo.dev/schemas/toolchain.json"
+
+unstable_go:
+  bins:
+    - bin: github.com/go-delve/delve/cmd/dlv@latest
+      local: true
+    - bin: github.com/sqlc-dev/sqlc/cmd/sqlc@latest
+    - bin: github.com/golangci/golangci-lint/cmd/golangci-lint@latest
+    - bin: go.k6.io/k6@latest
+    - bin: gotest.tools/gotestsum@latest

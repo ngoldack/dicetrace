@@ -1,0 +1,26 @@
+services:
+  nats: 
+    image: nats:latest
+    ports:
+      - "4222:4222"
+      - "8222:8222"
+    volumes:
+      - nats_data:/data
+      - ./docker/nats/nats.conf:/etc/nats/nats.conf:ro
+    healthcheck:
+      test: ["CMD", "nats", "ping", "-s", "nats://localhost:4222", "-t", "5"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  nui:
+    image: ghcr.io/nats-nui/nui:latest
+    ports:
+      - "31311:31311"
+    volumes:
+      - nui_db:/db
+
+
+volumes:
+  nats_data:
+  nui_db:
